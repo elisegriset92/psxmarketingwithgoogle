@@ -6,11 +6,11 @@ name: 'Chromatic'
 on:
   pull_request:
     types: [opened,edited,reopened,synchronize,labeled]
-#    paths:
-#      - '_dev/**'
+
   push:
     branches:
       - master
+      - feature/test-chromatic-workflow
 
 # List of jobs
 jobs:
