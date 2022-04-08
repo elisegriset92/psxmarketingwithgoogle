@@ -9,14 +9,14 @@
     <ps-accounts
       class="ps_gs-ps-account-card"
       :context="psAccountsContext"
-    />
+    />HEY
     <template v-if="psAccountsContext.isShopContext">
-      <section-title
+      <!-- <section-title
         :step-number="2"
         :step-title="$t('onboarding.sectionTitle.freeListing')"
         :is-enabled="stepsAreCompleted.step1"
         :is-done="stepsAreCompleted.step2"
-      />
+      /> -->
       <ProductFeedNotice
         v-if="stepsAreCompleted.step1"
       />
@@ -193,9 +193,12 @@ export default {
     },
     onGoogleAdsAccountSelected() {
       this.$store.commit('googleAds/SAVE_GOOGLE_ADS_ACCOUNT_CONNECTED_ONCE', true);
-      this.$bvModal.show(
-        this.$refs.PopinModuleConfigured.$refs.modal.id,
-      );
+      console.log('hey');
+      if (this.billingSettingsCompleted) {
+        this.$bvModal.show(
+          this.$refs.PopinModuleConfigured.$refs.modal.id,
+        );
+      }
     },
     onGoogleAccountConnection() {
       this.$store.commit('accounts/SAVE_GOOGLE_ACCOUNT_CONNECTED_ONCE', true);
@@ -344,6 +347,7 @@ export default {
     },
   },
   mounted() {
+    console.log('MOUNTD');
     // Try to retrieve Google account details. If the merchant is not onboarded,
     // this action will dispatch another one to generate the authentication route.
     // We do it if the state is empty
