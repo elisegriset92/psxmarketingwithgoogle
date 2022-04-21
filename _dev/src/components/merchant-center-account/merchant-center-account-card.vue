@@ -743,6 +743,7 @@ export default {
         params: SegmentGenericParams,
       });
       this.$emit('dissociateMerchantCenterAccount');
+      this.$store.dispatch('accounts/SEND_WEBSITE_REQUIREMENTS', []);
     },
     overrideClaim() {
       if (this.$refs.mcaPopinOverrideClaim) {

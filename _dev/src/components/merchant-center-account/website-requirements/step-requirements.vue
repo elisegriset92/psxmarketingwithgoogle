@@ -7,7 +7,7 @@
       class="font-weight-normal ps_gs-fz-14 mb-2 bg-transparent border-0"
       :markdown="$t('mcaRequirements.legend')"
       :extensions="['no-p-tag']"
-    />
+    />coucou
     <b-alert
       v-if="!newMca"
       variant="info"
@@ -82,6 +82,9 @@ export default {
     requirements() {
       return Object.values(WebsiteRequirements);
     },
+    getWebsiteRequirements() {
+      return this.$store.getters['accounts/GET_WEBSITE_REQUIREMENTS'];
+    },
   },
   methods: {
     safeString(str) {
@@ -107,6 +110,14 @@ export default {
         this.selectedRequirements = this.$store.getters['accounts/GET_WEBSITE_REQUIREMENTS'];
       });
     }
+  },
+  watch: {
+    getWebsiteRequirements(oldVal, newVal) {
+      console.log(oldVal, newVal)
+      if (oldVal !== newVal) {
+        this.selectedRequirements = newVal;
+      }
+    },
   },
   googleUrl,
 };
